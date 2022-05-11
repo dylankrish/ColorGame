@@ -1,11 +1,10 @@
-
 import javax.swing.*;
 
-public class ColorGameGUI {
+public class gameGUI {
     private JFrame frame;
     private JPanel panel;
 
-    public ColorGameGUI() {
+    public gameGUI() {
         frame = new JFrame();
         panel = new JPanel();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -15,5 +14,4 @@ public class ColorGameGUI {
         frame.add(panel);
 
     }
-
 }
