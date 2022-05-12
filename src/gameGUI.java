@@ -22,7 +22,7 @@ public class gameGUI implements ActionListener {
             for (int j = 0; j < Y; j++) {
                 JButton btn = new JButton();
                 lightButtons[i][j] = btn;
-                btn.setBorder(BorderFactory.createLineBorder(Color.blue)); // sets border color
+                // btn.setBorder(BorderFactory.createLineBorder(Color.blue)); // sets border color
                 btn.setBackground(Color.pink); // sets background color
                 contentPane.add(btn);
             }

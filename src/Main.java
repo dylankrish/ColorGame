@@ -3,7 +3,6 @@ public class Main extends gameGUI {
 
 
         Main game = new Main();
-        System.out.println("Hello world!");
-        System.out.println("Testing ColorGame");
+
     }
 }
