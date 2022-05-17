@@ -17,16 +17,16 @@ public class gameGUI implements ActionListener {
         buttonPanel.setLayout(new GridLayout(X,Y));
         JPanel contentPane = new JPanel();
         contentPane.setLayout(new java.awt.GridLayout(X, Y));
-
+        int randomRed = randomRGB();
+        int randomGreen = randomRGB();
+        int randomBlue = randomRGB();
+        System.out.println(randomRed + " " + randomGreen + " " + randomBlue);
         for (int i = 0; i < X; i++) {
             for (int j = 0; j < Y; j++) {
                 JButton btn = new JButton();
                 lightButtons[i][j] = btn;
                 btn.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
-                int randomRed = randomRGB();
-                int randomGreen = randomRGB();
-                int randomBlue = randomRGB();
-                btn.setBackground(new Color(0, 255, 168));
+                btn.setBackground(new Color(randomRed, randomGreen, randomBlue));
                 btn.setOpaque(true);
                 btn.setBorderPainted(false);
                 contentPane.add(btn);
