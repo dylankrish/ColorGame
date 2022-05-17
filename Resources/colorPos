@@ -1,0 +1,7 @@
+public void randomPos() {
+		int Xpos = (int)(Math.random()*5);
+		int Ypos = (int)(Math.random()*5);
+		
+		
+		
+	}
