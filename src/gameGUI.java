@@ -42,7 +42,17 @@ public class gameGUI implements ActionListener {
         return (int)(Math.random() * 255);
     }
     public int variationRGB(int color) {
-        return (int)(Math.random() * color);
+        // choose a random number between 5 and 10
+        int random = (int)(Math.random() * 5) + 5;
+        // add or subtract that number from the color
+        // choose a random number between 0 and 1
+        int random2 = (int)(Math.random() * 2);
+        if (random2 == 1) {
+            return(color + random);
+        } else {
+            return(color - random);
+        }
+        // return (int)(Math.random() * color);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
