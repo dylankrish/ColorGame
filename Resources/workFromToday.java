@@ -113,8 +113,12 @@ public class gameGUI implements ActionListener {
 					newBlue = newBlue - 40;
 				}
 				
+				int newPosX = (int)(Math.random() * 3);
+				int newPosY = (int)(Math.random() * 3);
+				
+				
 				System.out.print( i + "," + j + " ");
-				if (lightButtons[i][j] == lightButtons[3][3]) {
+				if (lightButtons[i][j] == lightButtons[2][3]) {
 					btn.setBackground(new Color(newRed, newGreen, newBlue));	
 				}
 			}
