@@ -72,7 +72,7 @@ public class gameGUI implements ActionListener {
 		int randomGreen = randomRGB();
 		int randomBlue = randomRGB();
 
-		JButton btnColor = new JButton();
+		//JButton btnColor = new JButton();
 
 		System.out.println(randomRed + " " + randomGreen + " " + randomBlue);
 		for (int i = 0; i < X; i++) {
