@@ -49,6 +49,8 @@ public class gameGUI implements ActionListener {
                 }
 				
 				contentPane.add(btn);
+
+                // BEGIN RANDOM COLORS:
 				int IPos = 0;
 				int JPos = 0;
 
@@ -84,6 +86,7 @@ public class gameGUI implements ActionListener {
 				if (lightButtons[i][j] == lightButtons[2][3]) {
 					btn.setBackground(new Color(newRed, newGreen, newBlue));	
 				}
+                // END RANDOM COLORS
 			}
 		}
 
@@ -97,7 +100,20 @@ public class gameGUI implements ActionListener {
 		return (int)(Math.random() * 255);
 	}
 
-
+    // Unused
+    public int variationRGB(int color) {
+        // choose a random number between 5 and 10
+        int random = (int)(Math.random() * 5) + 5;
+        // add or subtract that number from the color
+        // choose a random number between 0 and 1
+        int random2 = (int)(Math.random() * 2);
+        if (random2 == 1) {
+            return(color + random);
+        } else {
+            return(color - random);
+        }
+        // return (int)(Math.random() * color);
+    }
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e);
