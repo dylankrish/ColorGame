@@ -31,12 +31,48 @@ public class gameGUI implements ActionListener {
 
 		//JButton btnColor = new JButton();
 
+		// BEGIN RANDOM COLORS:
+		int IPos = 0;
+		int JPos = 0;
+
+		int newRed = randomRed + 40;
+		int newGreen = randomGreen + 40;
+		int newBlue = randomBlue + 40;
+
+		// needs to be + 40 cause math
+		// make it more or less depending one level
+		// if user goes to each level (like 10) decrease the variation
+
+		// this is the variation statement
+		if (newRed >= 255) {
+			newRed = newRed - 40;
+		}
+
+		if (newGreen >= 255) {
+			newGreen = newGreen - 40;
+		}
+
+		if (newBlue >= 255) {
+			newBlue = newBlue - 40;
+		}
+
+		// create a random number between 0 and X
+		int randomI = (int)(Math.random() * X);
+		System.out.println(randomI);
+
+		// create a random number between 0 and Y
+		int randomJ = (int)(Math.random() * Y);
+		System.out.println(randomJ);
+		
+
+		// END RANDOM COLORS
+
 		System.out.println(randomRed + " " + randomGreen + " " + randomBlue);
 		for (int i = 0; i < X; i++) {
 			for (int j = 0; j < Y; j++) {
 				JButton btn = new JButton();
 
-				lightButtons[i][j] = btn; // tells the position of the buttons ? 
+				lightButtons[i][j] = btn; // btn is the name of the button
 				// btn.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 				btn.setBorder(BorderFactory.createLineBorder(Color.white));
 				btn.setBackground(new Color(randomRed, randomGreen, randomBlue));
@@ -48,47 +84,18 @@ public class gameGUI implements ActionListener {
 				    btn.setBorderPainted(false);
                 }
 				
+				// SET RANDOM COLORS
+				if (i == randomI && j == randomJ) {
+					lightButtons[randomI][randomJ] = btn;
+					btn.setBackground(new Color(newRed, newGreen, newBlue));
+				}
+				
+
 				contentPane.add(btn);
-
-                // BEGIN RANDOM COLORS:
-				int IPos = 0;
-				int JPos = 0;
-
-				int newPosJ = JPos;
-				int newPosI = IPos;
-
-				int newRed = randomRed + 40;
-				int newGreen = randomGreen + 40;
-				int newBlue = randomBlue + 40;
-				
-				// needs to be + 40 cause math
-				// make it more or less depending one level
-				// if user goes to each level (like 10) decrease the variation
-				
-				// this is the variation statement
-				if (newRed >= 255) {
-					newRed = newRed - 40;
-				}
-				
-				if (newGreen >= 255) {
-					newGreen = newGreen - 40;
-				}
-				
-				if (newBlue >= 255) {
-					newBlue = newBlue - 40;
-				}
-				
-				int newPosX = (int)(Math.random() * 3);
-				int newPosY = (int)(Math.random() * 3);
-				
-				
-				System.out.print( i + "," + j + " ");
-				if (lightButtons[i][j] == lightButtons[2][3]) {
-					btn.setBackground(new Color(newRed, newGreen, newBlue));	
-				}
-                // END RANDOM COLORS
 			}
 		}
+
+		
 
 		frame.add(contentPane);
 		frame.setSize(500, 500);
