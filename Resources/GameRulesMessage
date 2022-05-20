@@ -1,0 +1,41 @@
+//		// Message JFrame
+//		String LABEL_TEXT = "GAME RULES!!!!!!!!!!!!!!! READ THIS ISH!!!!!!! ";
+//		// When it clicks X game shuts down to so fix that; maybe do in main class
+//		
+//		JFrame frameMessage = new JFrame();
+//		JPanel panelMessage = new JPanel();
+//		JPanel contentPanelMessage;
+//		JLabel label;
+//		JLabel label2;
+//		JButton button;
+//		frameMessage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	
+//		/* Create and set up the frame */
+//		frameMessage = new JFrame("Message");
+//		frameMessage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		
+//		contentPanelMessage = new JPanel();
+//		contentPanelMessage.setLayout(new GridLayout(2,2,10,5));
+//		contentPanelMessage.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+//		
+//		label = new JLabel(LABEL_TEXT);
+//		label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+//		label.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
+//		contentPanelMessage.add(label);
+//		frameMessage.setContentPane(contentPanelMessage);
+//		
+//		button = new JButton("Click when finished reading instructions");
+//		button.setAlignmentX(JButton.CENTER_ALIGNMENT);
+//		button.setActionCommand("Answer");
+//		button.addActionListener(this);
+//		contentPanelMessage.add(button);
+//
+//		/* Size and then display the frame. */
+//		frameMessage.pack();
+//		frameMessage.setVisible(true);
+//	
+//		frameMessage.add(contentPanelMessage);
+//		frameMessage.setSize(500, 500);
+//		//frameMessage.setVisible(true);
+//		frameMessage.add(contentPanelMessage);
+//		
