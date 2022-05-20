@@ -66,15 +66,15 @@ public class gameGUI implements ActionListener {
 				// if user goes to each level (like 10) decrease the variation
 				
 				// this is the variation statement
-				if (newRed >= 250) {
+				if (newRed >= 255) {
 					newRed = newRed - 40;
 				}
 				
-				if (newGreen >= 250) {
+				if (newGreen >= 255) {
 					newGreen = newGreen - 40;
 				}
 				
-				if (newBlue >= 250) {
+				if (newBlue >= 255) {
 					newBlue = newBlue - 40;
 				}
 				
@@ -100,12 +100,12 @@ public class gameGUI implements ActionListener {
 		return (int)(Math.random() * 255);
 	}
 
-    // Unused
+    // Unused Method
     public int variationRGB(int color) {
         // choose a random number between 5 and 10
         int random = (int)(Math.random() * 5) + 5;
         // add or subtract that number from the color
-        // choose a random number between 0 and 1
+        // choose a random number between 0 and 1, picks when to add or subtract
         int random2 = (int)(Math.random() * 2);
         if (random2 == 1) {
             return(color + random);
