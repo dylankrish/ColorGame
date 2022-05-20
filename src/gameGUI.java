@@ -16,6 +16,7 @@ public class gameGUI implements ActionListener {
 		int Y = 5;
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
+		JOptionPane.showMessageDialog(frame, "read the damn rules");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
