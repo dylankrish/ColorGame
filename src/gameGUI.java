@@ -7,8 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-
 public class gameGUI implements ActionListener {
 	int IPos = 0;
 	int JPos = 0;
