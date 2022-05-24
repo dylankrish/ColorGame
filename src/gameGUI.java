@@ -124,9 +124,17 @@ public class gameGUI implements ActionListener {
         // choose a random number between 0 and 1, picks when to add or subtract
         int random2 = (int)(Math.random() * 2);
         if (random2 == 1) {
-            return(color + random);
+			if (color + random > 255) {
+				return color - random;
+			} else {
+				return color + random;
+			}
         } else {
-            return(color - random);
+			if (color - random < 0) {
+				return color + random;
+			} else {
+				return color - random;
+			}
         }
         // return (int)(Math.random() * color);
     }
