@@ -43,7 +43,7 @@ public class gameGUI implements ActionListener {
 		int newBlue = randomBlue + 40;
 
 		// needs to be + 40 cause math
-		// make it more or less depending one level
+		// make it more or less depending on level
 		// if user goes to each level (like 10) decrease the variation
 
 		// this is the variation statement
