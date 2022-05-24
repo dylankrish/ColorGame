@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 
 
 public class gameGUI implements ActionListener {
+	int IPos = 0;
+	int JPos = 0;
 	public gameGUI() {
 		// Creates button array
 		int X = 5;
@@ -17,7 +19,7 @@ public class gameGUI implements ActionListener {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		// Show rules
-		JOptionPane.showMessageDialog(frame, "read the damn rules");
+//		JOptionPane.showMessageDialog(frame, "read the damn rules");
 		// Default exit on close operation
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -31,33 +33,37 @@ public class gameGUI implements ActionListener {
 		int randomRed = randomRGB();
 		int randomGreen = randomRGB();
 		int randomBlue = randomRGB();
+		int newRed = variationRGB(randomRed);
+		int newGreen = variationRGB(randomGreen);
+		int newBlue = variationRGB(randomBlue);
+
 
 		//JButton btnColor = new JButton();
 
 		// BEGIN RANDOM COLORS:
-		int IPos = 0;
-		int JPos = 0;
+		IPos = 0;
+		JPos = 0;
 
-		int newRed = randomRed + 40;
-		int newGreen = randomGreen + 40;
-		int newBlue = randomBlue + 40;
+//		int newRed = randomRed + 40;
+//		int newGreen = randomGreen + 40;
+//		int newBlue = randomBlue + 40;
 
 		// needs to be + 40 cause math
 		// make it more or less depending on level
 		// if user goes to each level (like 10) decrease the variation
 
 		// this is the variation statement
-		if (newRed >= 255) {
-			newRed = newRed - 40;
-		}
-
-		if (newGreen >= 255) {
-			newGreen = newGreen - 40;
-		}
-
-		if (newBlue >= 255) {
-			newBlue = newBlue - 40;
-		}
+//		if (newRed >= 255) {
+//			newRed = newRed - 40;
+//		}
+//
+//		if (newGreen >= 255) {
+//			newGreen = newGreen - 40;
+//		}
+//
+//		if (newBlue >= 255) {
+//			newBlue = newBlue - 40;
+//		}
 
 		// create a random number between 0 and X
 		int randomI = (int)(Math.random() * X);
@@ -112,8 +118,8 @@ public class gameGUI implements ActionListener {
 
     // Unused Method
     public int variationRGB(int color) {
-        // choose a random number between 5 and 10
-        int random = (int)(Math.random() * 5) + 5;
+        // choose a random number between 10 and 20
+		int random = (int)(Math.random() * 10) + 10;
         // add or subtract that number from the color
         // choose a random number between 0 and 1, picks when to add or subtract
         int random2 = (int)(Math.random() * 2);
@@ -125,7 +131,15 @@ public class gameGUI implements ActionListener {
         // return (int)(Math.random() * color);
     }
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println(e);
+	public void actionPerformed(ActionEvent event) {
+		String eventName = event.getActionCommand();
+		System.out.println(event);
+		String[] eventNameSplit = event.getActionCommand().split(" ");
+		int y = Integer.valueOf(eventNameSplit[0]);
+		int x = Integer.valueOf(eventNameSplit[1]);
+		System.out.print(JPos + " " + IPos);
+
+
+
 	}
 }
