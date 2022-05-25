@@ -8,12 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class gameGUI implements ActionListener {
+	int X = 5;
+	int Y = 5;
 	int IPos = 0;
 	int JPos = 0;
 	public gameGUI() {
 		// Creates button array
-		int X = 5;
-		int Y = 5;
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		// Show rules
@@ -141,11 +141,15 @@ public class gameGUI implements ActionListener {
 		String eventName = event.getActionCommand();
 		System.out.println(event);
 		String[] eventNameSplit = event.getActionCommand().split(" ");
-		int y = Integer.valueOf(eventNameSplit[0]);
-		int x = Integer.valueOf(eventNameSplit[1]);
+		int selectedY = Integer.valueOf(eventNameSplit[0]);
+		int selectedX = Integer.valueOf(eventNameSplit[1]);
 		System.out.print(JPos + " " + IPos);
 
 
 
+
 	}
+
+	// recursive function to check if the button position is IPos and JPos
+
 }
