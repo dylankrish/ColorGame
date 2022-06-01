@@ -1,5 +1,6 @@
 
 import javax.swing.*;
+import java.net.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,10 +11,10 @@ public class gameGUI implements ActionListener {
 	int Y = 5;
 	int IPos = 0;
 	int JPos = 0;
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
 	public gameGUI() {
 		// Creates button array
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
 		// Show rules
 //		JOptionPane.showMessageDialog(frame, "read the damn rules");
 		// Default exit on close operation
@@ -78,6 +79,8 @@ public class gameGUI implements ActionListener {
 				JButton btn = new JButton();
 
 				lightButtons[i][j] = btn; // btn is the name of the button
+				lightButtons[i][j].setActionCommand("no.");
+                lightButtons[i][j].addActionListener(this);
 				// btn.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 				btn.setBorder(BorderFactory.createLineBorder(Color.white));
 				btn.setBackground(new Color(randomRed, randomGreen, randomBlue));
@@ -93,6 +96,8 @@ public class gameGUI implements ActionListener {
 				if (i == randomI && j == randomJ) {
 					lightButtons[randomI][randomJ] = btn;
 					btn.setBackground(new Color(newRed, newGreen, newBlue));
+					lightButtons[i][j].setActionCommand("randomclicked");
+                    lightButtons[i][j].addActionListener(this);
 				}
 				
 
@@ -138,16 +143,23 @@ public class gameGUI implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		String eventName = event.getActionCommand();
 		System.out.println(event);
-		String[] eventNameSplit = event.getActionCommand().split(" ");
-		int selectedY = Integer.valueOf(eventNameSplit[0]);
-		int selectedX = Integer.valueOf(eventNameSplit[1]);
-		System.out.print(JPos + " " + IPos);
+		if (eventName.equals("randomclicked")) {
+			System.out.println("random clicked");
+
+			
+			// frame.repaint();
+			// frame.revalidate();
+
+		} else if (eventName.equals("no.")) {
+			System.out.println("no.");
+			try {
+    			Desktop.getDesktop().browse(new URL("https://www.youtube.com/watch?v=dQw4w9WgXcQ").toURI());
+			} catch (Exception e) {}
+		}
 
 
 
 
 	}
-
-	// recursive function to check if the button position is IPos and JPos
 
 }
