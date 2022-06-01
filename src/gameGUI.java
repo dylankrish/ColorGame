@@ -117,7 +117,6 @@ public class gameGUI implements ActionListener {
 		return (int)(Math.random() * 255);
 	}
 
-    // Unused Method
     public int variationRGB(int color) {
         // choose a random number between 10 and 20
 		int random = (int)(Math.random() * 10) + 10;
