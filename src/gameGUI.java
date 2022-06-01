@@ -22,7 +22,7 @@ public class gameGUI implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		JPanel buttonPanel = new JPanel();//a new panel to hold all of the //buttons on the game board.
+		JPanel buttonPanel = new JPanel(); //a new panel to hold all of the //buttons on the game board.
 		JButton[][] lightButtons;
 		lightButtons = new JButton[X][Y]; //creates a new two dimensional //ray that will hold 25 buttons.
 		buttonPanel.setLayout(new GridLayout(X,Y));
