@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 public class gameGUI implements ActionListener {
 	int X = 5;
 	int Y = 5;
-	int IPos = 0;
-	int JPos = 0;
+	int xRand = 0;
+	int yRand = 0;
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	public gameGUI() {
@@ -38,8 +38,8 @@ public class gameGUI implements ActionListener {
 		//JButton btnColor = new JButton();
 
 		// BEGIN RANDOM COLORS:
-		IPos = 0;
-		JPos = 0;
+		xRand = 0;
+		yRand = 0;
 
 //		int newRed = randomRed + 40;
 //		int newGreen = randomGreen + 40;
@@ -117,6 +117,7 @@ public class gameGUI implements ActionListener {
 		return (int)(Math.random() * 255);
 	}
 
+
     public int variationRGB(int color) {
         // choose a random number between 10 and 20
 		int random = (int)(Math.random() * 10) + 10;
@@ -155,10 +156,10 @@ public class gameGUI implements ActionListener {
     			Desktop.getDesktop().browse(new URL("https://www.youtube.com/watch?v=dQw4w9WgXcQ").toURI());
 			} catch (Exception e) {}
 		}
-
-
-
-
+	}
+	public void recursiveAnimation() {
+		System.out.println("Starting recursive animation at " + System.currentTimeMillis() + "ms on position " + xRand + " " + yRand);
+		
 	}
 
 }
