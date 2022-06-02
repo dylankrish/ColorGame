@@ -1,7 +1,7 @@
 
 import javax.swing.*;
 import java.net.*;
-
+import java.lang.Thread;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,17 +13,17 @@ public class gameGUI implements ActionListener {
 	int yRand = 0;
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
+	JButton[][] lightButtons;
 	public gameGUI() {
 		// Creates button array
 		// Show rules
-//		JOptionPane.showMessageDialog(frame, "read the damn rules");
+		// JOptionPane.showMessageDialog(frame, "read the damn rules");
 		// Default exit on close operation
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		JPanel buttonPanel = new JPanel(); //a new panel to hold all of the //buttons on the game board.
-		JButton[][] lightButtons;
-		lightButtons = new JButton[X][Y]; //creates a new two dimensional //ray that will hold 25 buttons.
+		lightButtons = new JButton[X][Y]; //creates a new two dimensional array that will hold 25 buttons.
 		buttonPanel.setLayout(new GridLayout(X,Y));
 		JPanel contentPane = new JPanel();
 		contentPane.setLayout(new java.awt.GridLayout(X, Y));
@@ -146,9 +146,7 @@ public class gameGUI implements ActionListener {
 		if (eventName.equals("randomclicked")) {
 			System.out.println("random clicked");
 
-			
-			// frame.repaint();
-			// frame.revalidate();
+			recursiveAnimation(xRand, yRand);
 
 		} else if (eventName.equals("no.")) {
 			System.out.println("no.");
@@ -157,9 +155,111 @@ public class gameGUI implements ActionListener {
 			} catch (Exception e) {}
 		}
 	}
-	public void recursiveAnimation() {
-		System.out.println("Starting recursive animation at " + System.currentTimeMillis() + "ms on position " + xRand + " " + yRand);
+	public void recursiveAnimation(int inputX, int inputY) {
+		System.out.println("Starting recursive animation at " + System.currentTimeMillis() + "ms on position " + inputX + " " + inputY);
 		
+		// change inputX - 1, inputY + 1 button to black
+		// check to see if inputX - 1, inputY + 1 is black or out of bounds
+		// if black or out of bounds, return
+		// if not black, change to black and call recursiveAnimation on that button
+
+		// X - 1, Y + 1
+		if (inputX - 1 >= 0 && inputY + 1 < Y) {
+			if (!lightButtons[inputX - 1][inputY + 1].getBackground().equals(Color.black)) {
+				lightButtons[inputX - 1][inputY + 1].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX - 1, inputY + 1);
+			}
+		}
+		// X, Y + 1
+		if (inputY + 1 < Y) {
+			if (!lightButtons[inputX][inputY + 1].getBackground().equals(Color.black)) {
+				lightButtons[inputX][inputY + 1].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX, inputY + 1);
+			}
+		}
+		// X + 1, Y + 1
+		if (inputX + 1 < X && inputY + 1 < Y) {
+			if (!lightButtons[inputX + 1][inputY + 1].getBackground().equals(Color.black)) {
+				lightButtons[inputX + 1][inputY + 1].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX + 1, inputY + 1);
+			}
+		}
+		// X - 1, Y
+		if (inputX - 1 >= 0) {
+			if (!lightButtons[inputX - 1][inputY].getBackground().equals(Color.black)) {
+				lightButtons[inputX - 1][inputY].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX - 1, inputY);
+			}
+		}
+		// X + 1, Y
+		if (inputX + 1 < X) {
+			if (!lightButtons[inputX + 1][inputY].getBackground().equals(Color.black)) {
+				lightButtons[inputX + 1][inputY].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX + 1, inputY);
+			}
+		}
+		// X - 1, Y - 1
+		if (inputX - 1 >= 0 && inputY - 1 >= 0) {
+			if (!lightButtons[inputX - 1][inputY - 1].getBackground().equals(Color.black)) {
+				lightButtons[inputX - 1][inputY - 1].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX - 1, inputY - 1);
+			}
+		}
+		// X, Y - 1
+		if (inputY - 1 >= 0) {
+			if (!lightButtons[inputX][inputY - 1].getBackground().equals(Color.black)) {
+				lightButtons[inputX][inputY - 1].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX, inputY - 1);
+			}
+		}
+		// X + 1, Y - 1
+		if (inputX + 1 < X && inputY - 1 >= 0) {
+			if (!lightButtons[inputX + 1][inputY - 1].getBackground().equals(Color.black)) {
+				lightButtons[inputX + 1][inputY - 1].setBackground(Color.black);
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {}
+				frame.repaint();
+				frame.revalidate();
+				recursiveAnimation(inputX + 1, inputY - 1);
+			}
+		}
+		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + "ms on position " + inputX + " " + inputY);
 	}
 
 }
