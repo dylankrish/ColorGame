@@ -240,7 +240,7 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				
+
 				Thread thread = new Thread(){
 					public void run(){
 						  recursiveAnimation(inputX + 1, inputY + 1);
@@ -358,6 +358,8 @@ public class gameGUI implements ActionListener {
 				recursionFinished = true;
 				return;
 			}
+			return;
+
 		}
 
 		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + " ms on position " + inputX + " " + inputY);
