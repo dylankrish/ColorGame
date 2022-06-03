@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 public class gameGUI implements ActionListener {
 	int X = 10;
 	int Y = 10;
-	int xRand = 0;
-	int yRand = 0;
+	int randomX;
+	int randomY;
+	// int xRand = 0;
+	// int yRand = 0;
+	boolean recursionFinished = false;
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JButton[][] lightButtons;
@@ -47,8 +50,8 @@ public class gameGUI implements ActionListener {
 		// JButton btnColor = new JButton();
 
 		// BEGIN RANDOM COLORS:
-		xRand = 0;
-		yRand = 0;
+		// xRand = 0;
+		// yRand = 0;
 
 		// int newRed = randomRed + 40;
 		// int newGreen = randomGreen + 40;
@@ -71,15 +74,17 @@ public class gameGUI implements ActionListener {
 		// newBlue = newBlue - 40;
 		// }
 
+		// END RANDOM COLORS
+
 		// create a random number between 0 and X
-		int randomI = (int) (Math.random() * X);
-		System.out.println(randomI);
+		randomX = (int) (Math.random() * X);
+		System.out.println(randomX);
 
 		// create a random number between 0 and Y
-		int randomJ = (int) (Math.random() * Y);
-		System.out.println(randomJ);
+		randomY = (int) (Math.random() * Y);
+		System.out.println(randomY);
 
-		// END RANDOM COLORS
+
 
 		System.out.println(randomRed + " " + randomGreen + " " + randomBlue);
 		for (int i = 0; i < X; i++) {
@@ -100,8 +105,8 @@ public class gameGUI implements ActionListener {
 				}
 
 				// SET RANDOM COLORS
-				if (i == randomI && j == randomJ) {
-					lightButtons[randomI][randomJ] = btn;
+				if (i == randomY && j == randomY) {
+					lightButtons[randomX][randomY] = btn;
 					btn.setBackground(new Color(newRed, newGreen, newBlue));
 					lightButtons[i][j].setActionCommand("randomclicked");
 					lightButtons[i][j].addActionListener(this);
@@ -146,15 +151,22 @@ public class gameGUI implements ActionListener {
 		if (eventName.equals("randomclicked")) {
 			System.out.println("random clicked");
 
-			Thread thread = new Thread(){
-				public void run(){
+			Thread thread = new Thread() {
+				public void run() {
 				  	System.out.println("Recursive thread running");
-				  	recursiveAnimation(xRand, yRand);
+				  	recursiveAnimation(randomX, randomY);
+				}
+			};
+
+			Thread thread2 = new Thread() {
+				public void run() {
+				  	System.out.println("Post Recursion");
+				  	postRecursion();
 				}
 			};
 
 			thread.start();
-			System.out.println("Re-creating GUI");
+			thread2.start();
 			// createGameGUI();
 
 		} else if (eventName.equals("no.")) {
@@ -168,7 +180,7 @@ public class gameGUI implements ActionListener {
 	}
 
 	public void recursiveAnimation(int inputX, int inputY) {
-		System.out.println("Starting recursive animation at " + System.currentTimeMillis() + "ms on position " + inputX + " " + inputY);
+		System.out.println("Starting recursive animation at " + System.currentTimeMillis() + " ms on position " + inputX + " " + inputY);
 
 		// change inputX - 1, inputY + 1 button to black
 		// check to see if inputX - 1, inputY + 1 is black or out of bounds
@@ -189,7 +201,6 @@ public class gameGUI implements ActionListener {
 				
 				Thread thread = new Thread(){
 					public void run(){
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX - 1, inputY + 1);
 					}
 				};
@@ -211,7 +222,6 @@ public class gameGUI implements ActionListener {
 				
 				Thread thread = new Thread(){
 					public void run(){
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX, inputY + 1);
 					}
 				};
@@ -232,7 +242,6 @@ public class gameGUI implements ActionListener {
 				frame.revalidate();
 				Thread thread = new Thread(){
 					public void run(){
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX + 1, inputY + 1);
 					}
 				};
@@ -254,7 +263,6 @@ public class gameGUI implements ActionListener {
 				
 				Thread thread = new Thread(){
 					public void run(){
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX - 1, inputY);
 					}
 				};
@@ -276,7 +284,6 @@ public class gameGUI implements ActionListener {
 
 				Thread thread = new Thread(){
 					public void run(){
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX + 1, inputY);
 					}
 				};
@@ -297,10 +304,10 @@ public class gameGUI implements ActionListener {
 				frame.revalidate();
 				Thread thread = new Thread() {
 					public void run() {
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX - 1, inputY - 1);
 					}
 				};
+
 				thread.run();
 			}
 		}
@@ -318,10 +325,10 @@ public class gameGUI implements ActionListener {
 				
 				Thread thread = new Thread(){
 					public void run(){
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX, inputY - 1);
 					}
 				};
+
 				thread.run();
 			}
 		}
@@ -338,23 +345,34 @@ public class gameGUI implements ActionListener {
 				frame.revalidate();
 				Thread thread = new Thread(){
 					public void run(){
-						  System.out.println("Thread Running");
 						  recursiveAnimation(inputX + 1, inputY - 1);
 					}
 				};
+
 				thread.run();
-				
+			}
+
+			if (inputX == X && inputY == Y) {
+				System.out.println("Finished Recursion");
+				recursionFinished = true;
+				return;
+			} 
+
+		}
+		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + " ms on position " + inputX + " " + inputY);
+	}
+	public void postRecursion() {
+		for (int i = 0; i < 1;) {
+			if (recursionFinished == true) {
+				recursionFinished = false;
+				System.out.println("Re-creating GUI");
+				createGameGUI();
+				frame.repaint();
+				frame.revalidate();
+				return;
 			}
 		}
-		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + "ms on position " + inputX + " " + inputY);
-	}
-	private void updateColors(int changeX, int changeY) {
-		// SwingUtilities.invokeLater(new Runnable() {
-		// 	public void run() {
-		// 		lightButtons[changeX][changeY].setBackground(Color.black);
-		// 	}
-		// });
-		lightButtons[changeX][changeY].setBackground(Color.black);
+		
 	}
 
 }
