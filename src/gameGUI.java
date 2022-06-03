@@ -154,6 +154,7 @@ public class gameGUI implements ActionListener {
 			Thread thread = new Thread() {
 				public void run() {
 				  	System.out.println("Recursive thread running");
+					System.out.println("CLICKED AT " + randomX + " " + randomY);
 				  	recursiveAnimation(randomX, randomY);
 				}
 			};
@@ -184,7 +185,7 @@ public class gameGUI implements ActionListener {
 
 		// change inputX - 1, inputY + 1 button to black
 		// check to see if inputX - 1, inputY + 1 is black or out of bounds
-		// if black or out of bounds, return
+		// if black or out of bounds, do nothing
 		// if not black, change to black and call recursiveAnimation on that button
 
 		// X - 1, Y + 1
@@ -207,6 +208,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
 		// X, Y + 1
 		if (inputY + 1 < Y) {
 			if (!lightButtons[inputX][inputY + 1].getBackground().equals(Color.black)) {
@@ -227,6 +229,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
 		// X + 1, Y + 1
 		if (inputX + 1 < X && inputY + 1 < Y) {
 			if (!lightButtons[inputX + 1][inputY + 1].getBackground().equals(Color.black)) {
@@ -246,6 +249,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
 		// X - 1, Y
 		if (inputX - 1 >= 0) {
 			if (!lightButtons[inputX - 1][inputY].getBackground().equals(Color.black)) {
@@ -266,6 +270,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
 		// X + 1, Y
 		if (inputX + 1 < X) {
 			if (!lightButtons[inputX + 1][inputY].getBackground().equals(Color.black)) {
@@ -286,6 +291,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
 		// X - 1, Y - 1
 		if (inputX - 1 >= 0 && inputY - 1 >= 0) {
 			if (!lightButtons[inputX - 1][inputY - 1].getBackground().equals(Color.black)) {
@@ -305,6 +311,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
 		// X, Y - 1
 		if (inputY - 1 >= 0) {
 			if (!lightButtons[inputX][inputY - 1].getBackground().equals(Color.black)) {
@@ -325,6 +332,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
 		// X + 1, Y - 1
 		if (inputX + 1 < X && inputY - 1 >= 0) {
 			if (!lightButtons[inputX + 1][inputY - 1].getBackground().equals(Color.black)) {
@@ -348,9 +356,9 @@ public class gameGUI implements ActionListener {
 				System.out.println("Finished Recursion");
 				recursionFinished = true;
 				return;
-			} 
-
+			}
 		}
+
 		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + " ms on position " + inputX + " " + inputY);
 	}
 	public void postRecursion() {
