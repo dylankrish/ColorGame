@@ -160,7 +160,7 @@ public class gameGUI implements ActionListener {
 
 			Thread thread2 = new Thread() {
 				public void run() {
-				  	System.out.println("Post Recursion");
+				  	System.out.println("Post recusion thread running (check)");
 				  	postRecursion();
 				}
 			};
