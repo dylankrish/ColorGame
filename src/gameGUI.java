@@ -1,8 +1,6 @@
 
 import javax.swing.*;
 import java.net.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.lang.Thread;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +15,6 @@ public class gameGUI implements ActionListener {
 	JPanel panel = new JPanel();
 	JButton[][] lightButtons;
 
-	ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 	
 	public gameGUI() {
 		// Creates button array
@@ -271,7 +268,6 @@ public class gameGUI implements ActionListener {
 					Thread.sleep(100);
 				} catch (Exception e) {
 				}
-				executorService.schedule(Classname::someTask, delayInSeconds, TimeUnit.SECONDS);
 				frame.repaint();
 				frame.revalidate();
 				recursiveAnimation(inputX + 1, inputY - 1);
