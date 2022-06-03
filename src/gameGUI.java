@@ -191,7 +191,6 @@ public class gameGUI implements ActionListener {
 		if (inputX - 1 >= 0 && inputY + 1 < Y) {
 			if (!lightButtons[inputX - 1][inputY + 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX - 1][inputY + 1].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -212,7 +211,6 @@ public class gameGUI implements ActionListener {
 		if (inputY + 1 < Y) {
 			if (!lightButtons[inputX][inputY + 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX][inputY + 1].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -233,7 +231,6 @@ public class gameGUI implements ActionListener {
 		if (inputX + 1 < X && inputY + 1 < Y) {
 			if (!lightButtons[inputX + 1][inputY + 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX + 1][inputY + 1].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -253,7 +250,6 @@ public class gameGUI implements ActionListener {
 		if (inputX - 1 >= 0) {
 			if (!lightButtons[inputX - 1][inputY].getBackground().equals(Color.black)) {
 				lightButtons[inputX - 1][inputY].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -274,7 +270,6 @@ public class gameGUI implements ActionListener {
 		if (inputX + 1 < X) {
 			if (!lightButtons[inputX + 1][inputY].getBackground().equals(Color.black)) {
 				lightButtons[inputX + 1][inputY].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -295,7 +290,6 @@ public class gameGUI implements ActionListener {
 		if (inputX - 1 >= 0 && inputY - 1 >= 0) {
 			if (!lightButtons[inputX - 1][inputY - 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX - 1][inputY - 1].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -315,7 +309,6 @@ public class gameGUI implements ActionListener {
 		if (inputY - 1 >= 0) {
 			if (!lightButtons[inputX][inputY - 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX][inputY - 1].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -336,7 +329,6 @@ public class gameGUI implements ActionListener {
 		if (inputX + 1 < X && inputY - 1 >= 0) {
 			if (!lightButtons[inputX + 1][inputY - 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX + 1][inputY - 1].setBackground(Color.black);
-				// updateColors(inputX, inputY);
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
