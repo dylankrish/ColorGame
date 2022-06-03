@@ -1,8 +1,8 @@
 
-public class Main extends gameGUI {
+public class Main {
     public static void main(String[] args) {
-        
-        Main game = new Main();
+
+        gameGUI game = new gameGUI();
 
     }
 }
