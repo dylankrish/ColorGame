@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class gameGUI implements ActionListener {
-	int X = 5;
-	int Y = 5;
+	int X = 10;
+	int Y = 10;
 	int xRand = 0;
 	int yRand = 0;
 	JFrame frame = new JFrame();
@@ -17,12 +17,21 @@ public class gameGUI implements ActionListener {
 
 	
 	public gameGUI() {
-		// Creates button array
 		// Show rules
-		// JOptionPane.showMessageDialog(frame, "read the damn rules");
+		JOptionPane.showMessageDialog(frame, "read the damn rules");
+		createGameGUI();
+	}
+
+	public int randomRGB() {
+		return (int) (Math.random() * 255);
+	}
+
+	public void createGameGUI() {
+
+		
 		// Default exit on close operation
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		// Creates button array
 		JPanel buttonPanel = new JPanel(); // a new panel to hold all of the //buttons on the game board.
 		lightButtons = new JButton[X][Y]; // creates a new two dimensional array that will hold 25 buttons.
 		buttonPanel.setLayout(new GridLayout(X, Y));
@@ -106,11 +115,6 @@ public class gameGUI implements ActionListener {
 		frame.setSize(500, 500);
 		frame.setVisible(true);
 		frame.add(panel);
-
-	}
-
-	public int randomRGB() {
-		return (int) (Math.random() * 255);
 	}
 
 	public int variationRGB(int color) {
@@ -144,13 +148,14 @@ public class gameGUI implements ActionListener {
 
 			Thread thread = new Thread(){
 				public void run(){
-				  	System.out.println("Thread Running");
+				  	System.out.println("Recursive thread running");
 				  	recursiveAnimation(xRand, yRand);
 				}
 			};
 
 			thread.start();
-			
+			System.out.println("Re-creating GUI");
+			// createGameGUI();
 
 		} else if (eventName.equals("no.")) {
 			System.out.println("no.");
@@ -158,6 +163,7 @@ public class gameGUI implements ActionListener {
 				Desktop.getDesktop().browse(new URL("https://www.youtube.com/watch?v=dQw4w9WgXcQ").toURI());
 			} catch (Exception e) {
 			}
+			System.exit(0);
 		}
 	}
 
@@ -175,7 +181,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX - 1][inputY + 1].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
@@ -197,7 +203,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX][inputY + 1].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
@@ -219,7 +225,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX + 1][inputY + 1].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
@@ -240,7 +246,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX - 1][inputY].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
@@ -262,7 +268,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX + 1][inputY].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
@@ -284,7 +290,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX - 1][inputY - 1].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
@@ -304,7 +310,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX][inputY - 1].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
@@ -325,7 +331,7 @@ public class gameGUI implements ActionListener {
 				lightButtons[inputX + 1][inputY - 1].setBackground(Color.black);
 				// updateColors(inputX, inputY);
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (Exception e) {
 				}
 				frame.repaint();
