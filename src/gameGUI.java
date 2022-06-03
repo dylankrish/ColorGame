@@ -21,7 +21,7 @@ public class gameGUI implements ActionListener {
 	
 	public gameGUI() {
 		// Show rules
-		JOptionPane.showMessageDialog(frame, "read the damn rules");
+		// JOptionPane.showMessageDialog(frame, "read the damn rules");
 		createGameGUI();
 	}
 
@@ -46,6 +46,12 @@ public class gameGUI implements ActionListener {
 		int newRed = variationRGB(randomRed);
 		int newGreen = variationRGB(randomGreen);
 		int newBlue = variationRGB(randomBlue);
+
+		// create a random number between 0 and X
+		randomX = (int) (Math.random() * X);
+
+		// create a random number between 0 and Y
+		randomY = (int) (Math.random() * Y);
 
 		// JButton btnColor = new JButton();
 
@@ -76,13 +82,7 @@ public class gameGUI implements ActionListener {
 
 		// END RANDOM COLORS
 
-		// create a random number between 0 and X
-		randomX = (int) (Math.random() * X);
-		System.out.println(randomX);
 
-		// create a random number between 0 and Y
-		randomY = (int) (Math.random() * Y);
-		System.out.println(randomY);
 
 
 
@@ -92,11 +92,7 @@ public class gameGUI implements ActionListener {
 				JButton btn = new JButton();
 
 				lightButtons[i][j] = btn; // btn is the name of the button
-				lightButtons[i][j].setActionCommand("no.");
-				lightButtons[i][j].addActionListener(this);
-				// btn.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
-				btn.setBorder(BorderFactory.createLineBorder(Color.white));
-				btn.setBackground(new Color(randomRed, randomGreen, randomBlue));
+				
 
 				String os = System.getProperty("os.name");
 				if (os.equals("Mac OS X")) {
@@ -104,12 +100,20 @@ public class gameGUI implements ActionListener {
 					btn.setBorderPainted(false);
 				}
 
-				// SET RANDOM COLORS
+				// CHECK FOR RANDOM COLORS
 				if (i == randomY && j == randomY) {
+					// Set the random unique color
 					lightButtons[randomX][randomY] = btn;
-					btn.setBackground(new Color(newRed, newGreen, newBlue));
 					lightButtons[i][j].setActionCommand("randomclicked");
 					lightButtons[i][j].addActionListener(this);
+					btn.setBorder(BorderFactory.createLineBorder(Color.white));
+					btn.setBackground(new Color(newRed, newGreen, newBlue));
+				} else {
+					// Set the normal color
+					lightButtons[i][j].setActionCommand("no.");
+					lightButtons[i][j].addActionListener(this);
+					btn.setBorder(BorderFactory.createLineBorder(Color.white));
+					btn.setBackground(new Color(randomRed, randomGreen, randomBlue));
 				}
 
 				contentPane.add(btn);
@@ -271,6 +275,25 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 		}
+
+		// X, Y
+		// if (!lightButtons[inputX][inputY].getBackground().equals(Color.black)) {
+		// 	lightButtons[inputX][inputY].setBackground(Color.black);
+		// 	try {
+		// 		Thread.sleep(50);
+		// 	} catch (Exception e) {
+		// 	}
+		// 	frame.repaint();
+		// 	frame.revalidate();
+			
+		// 	Thread thread = new Thread(){
+		// 		public void run(){
+		// 			  recursiveAnimation(inputX, inputY);
+		// 		}
+		// 	};
+
+		// 	thread.run();
+		// }
 
 		// X + 1, Y
 		if (inputX + 1 < X) {
