@@ -142,7 +142,15 @@ public class gameGUI implements ActionListener {
 		if (eventName.equals("randomclicked")) {
 			System.out.println("random clicked");
 
-			recursiveAnimation(xRand, yRand);
+			Thread thread = new Thread(){
+				public void run(){
+				  	System.out.println("Thread Running");
+				  	recursiveAnimation(xRand, yRand);
+				}
+			};
+
+			thread.start();
+			
 
 		} else if (eventName.equals("no.")) {
 			System.out.println("no.");
@@ -172,7 +180,15 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX - 1, inputY + 1);
+				
+				Thread thread = new Thread(){
+					public void run(){
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX - 1, inputY + 1);
+					}
+				};
+
+				thread.run();
 			}
 		}
 		// X, Y + 1
@@ -186,7 +202,15 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX, inputY + 1);
+				
+				Thread thread = new Thread(){
+					public void run(){
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX, inputY + 1);
+					}
+				};
+
+				thread.run();
 			}
 		}
 		// X + 1, Y + 1
@@ -200,7 +224,14 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX + 1, inputY + 1);
+				Thread thread = new Thread(){
+					public void run(){
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX + 1, inputY + 1);
+					}
+				};
+				
+				thread.run();
 			}
 		}
 		// X - 1, Y
@@ -214,7 +245,15 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX - 1, inputY);
+				
+				Thread thread = new Thread(){
+					public void run(){
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX - 1, inputY);
+					}
+				};
+
+				thread.run();
 			}
 		}
 		// X + 1, Y
@@ -228,7 +267,15 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX + 1, inputY);
+
+				Thread thread = new Thread(){
+					public void run(){
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX + 1, inputY);
+					}
+				};
+
+				thread.run();
 			}
 		}
 		// X - 1, Y - 1
@@ -242,7 +289,13 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX - 1, inputY - 1);
+				Thread thread = new Thread() {
+					public void run() {
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX - 1, inputY - 1);
+					}
+				};
+				thread.run();
 			}
 		}
 		// X, Y - 1
@@ -256,7 +309,14 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX, inputY - 1);
+				
+				Thread thread = new Thread(){
+					public void run(){
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX, inputY - 1);
+					}
+				};
+				thread.run();
 			}
 		}
 		// X + 1, Y - 1
@@ -270,7 +330,14 @@ public class gameGUI implements ActionListener {
 				}
 				frame.repaint();
 				frame.revalidate();
-				recursiveAnimation(inputX + 1, inputY - 1);
+				Thread thread = new Thread(){
+					public void run(){
+						  System.out.println("Thread Running");
+						  recursiveAnimation(inputX + 1, inputY - 1);
+					}
+				};
+				thread.run();
+				
 			}
 		}
 		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + "ms on position " + inputX + " " + inputY);
