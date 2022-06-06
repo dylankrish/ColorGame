@@ -7,19 +7,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class gameGUI implements ActionListener {
-	int X = 10;
-	int Y = 10;
+	int X = 2;
+	int Y = 2;
 	int randomX;
 	int randomY;
 	// int xRand = 0;
 	// int yRand = 0;
 	boolean recursionFinished = false;
-	JFrame frame = new JFrame();
-	JPanel panel = new JPanel();
+	JFrame frame;
+	JPanel panel;
 	JButton[][] lightButtons;
 
 	
-	public gameGUI() {
+	public gameGUI(int X, int Y) {
 		// Show rules
 		// JOptionPane.showMessageDialog(frame, "read the damn rules");
 		createGameGUI();
@@ -31,7 +31,9 @@ public class gameGUI implements ActionListener {
 
 	public void createGameGUI() {
 
-		
+		// Set frame and panel
+		frame = new JFrame();
+		panel = new JPanel();
 		// Default exit on close operation
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Creates button array
@@ -39,6 +41,7 @@ public class gameGUI implements ActionListener {
 		lightButtons = new JButton[X][Y]; // creates a new two dimensional array that will hold 25 buttons.
 		buttonPanel.setLayout(new GridLayout(X, Y));
 		JPanel contentPane = new JPanel();
+		
 		contentPane.setLayout(new java.awt.GridLayout(X, Y));
 		int randomRed = randomRGB();
 		int randomGreen = randomRGB();
@@ -165,14 +168,19 @@ public class gameGUI implements ActionListener {
 
 			Thread thread2 = new Thread() {
 				public void run() {
-				  	System.out.println("Post recursion thread running (check)");
-				  	postRecursion();
+				  	// System.out.println("Post recursion thread running (check)");
+				  	// postRecursion();
+					// System.out.println("Backup loop running");
+					// backupLoop();
+					reCreateGUI();
+
 				}
 			};
 
 			thread.start();
-			thread2.start();
+			// thread2.start();
 			// createGameGUI();
+			
 
 		} else if (eventName.equals("no.")) {
 			System.out.println("no.");
@@ -181,6 +189,43 @@ public class gameGUI implements ActionListener {
 			} catch (Exception e) {
 			}
 			System.exit(0);
+		} else if (eventName.equals("next")) {
+			System.out.println("next");
+			reCreateGUI();
+		}
+	}
+
+	public void reCreateGUI() {
+		frame.dispose();
+		// frame.setVisible(false);
+		frame = null;
+		panel = null;
+
+		X += 2;
+		Y += 2;
+		createGameGUI();
+	}
+
+	public void sysexit() {
+		try {
+			Thread.sleep(7000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.exit(0);
+	}
+
+	public void backupLoop() {
+		for (int i = 0; i < X; i++) {
+			for (int j = 0; j < Y; j++) {
+				lightButtons[i][j].setBackground(Color.black);
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 
@@ -196,6 +241,7 @@ public class gameGUI implements ActionListener {
 		if (inputX - 1 >= 0 && inputY + 1 < Y) {
 			if (!lightButtons[inputX - 1][inputY + 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX - 1][inputY + 1].setBackground(Color.black);
+				lightButtons[inputX - 1][inputY + 1].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -217,6 +263,7 @@ public class gameGUI implements ActionListener {
 		if (inputY + 1 < Y) {
 			if (!lightButtons[inputX][inputY + 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX][inputY + 1].setBackground(Color.black);
+				lightButtons[inputX][inputY + 1].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -238,6 +285,7 @@ public class gameGUI implements ActionListener {
 		if (inputX + 1 < X && inputY + 1 < Y) {
 			if (!lightButtons[inputX + 1][inputY + 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX + 1][inputY + 1].setBackground(Color.black);
+				lightButtons[inputX + 1][inputY + 1].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -259,6 +307,7 @@ public class gameGUI implements ActionListener {
 		if (inputX - 1 >= 0) {
 			if (!lightButtons[inputX - 1][inputY].getBackground().equals(Color.black)) {
 				lightButtons[inputX - 1][inputY].setBackground(Color.black);
+				lightButtons[inputX - 1][inputY].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -277,28 +326,29 @@ public class gameGUI implements ActionListener {
 		}
 
 		// X, Y
-		// if (!lightButtons[inputX][inputY].getBackground().equals(Color.black)) {
-		// 	lightButtons[inputX][inputY].setBackground(Color.black);
-		// 	try {
-		// 		Thread.sleep(50);
-		// 	} catch (Exception e) {
-		// 	}
-		// 	frame.repaint();
-		// 	frame.revalidate();
+		if (!lightButtons[inputX][inputY].getBackground().equals(Color.black)) {
+			lightButtons[inputX][inputY].setBackground(Color.black);
+			try {
+				Thread.sleep(50);
+			} catch (Exception e) {
+			}
+			frame.repaint();
+			frame.revalidate();
 			
-		// 	Thread thread = new Thread(){
-		// 		public void run(){
-		// 			  recursiveAnimation(inputX, inputY);
-		// 		}
-		// 	};
+			Thread thread = new Thread(){
+				public void run(){
+					  recursiveAnimation(inputX, inputY);
+				}
+			};
 
-		// 	thread.run();
-		// }
+			thread.run();
+		}
 
 		// X + 1, Y
 		if (inputX + 1 < X) {
 			if (!lightButtons[inputX + 1][inputY].getBackground().equals(Color.black)) {
 				lightButtons[inputX + 1][inputY].setBackground(Color.black);
+				lightButtons[inputX + 1][inputY].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -320,6 +370,7 @@ public class gameGUI implements ActionListener {
 		if (inputX - 1 >= 0 && inputY - 1 >= 0) {
 			if (!lightButtons[inputX - 1][inputY - 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX - 1][inputY - 1].setBackground(Color.black);
+				lightButtons[inputX - 1][inputY - 1].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -340,6 +391,7 @@ public class gameGUI implements ActionListener {
 		if (inputY - 1 >= 0) {
 			if (!lightButtons[inputX][inputY - 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX][inputY - 1].setBackground(Color.black);
+				lightButtons[inputX][inputY - 1].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -361,6 +413,7 @@ public class gameGUI implements ActionListener {
 		if (inputX + 1 < X && inputY - 1 >= 0) {
 			if (!lightButtons[inputX + 1][inputY - 1].getBackground().equals(Color.black)) {
 				lightButtons[inputX + 1][inputY - 1].setBackground(Color.black);
+				lightButtons[inputX + 1][inputY - 1].setActionCommand("next");
 				try {
 					Thread.sleep(50);
 				} catch (Exception e) {
@@ -376,7 +429,7 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 
-			if (inputX == X && inputY == Y) {
+			if (inputX == X - 1 && inputY == X - 1) {
 				System.out.println("Finished Recursion");
 				recursionFinished = true;
 				return;
@@ -389,6 +442,7 @@ public class gameGUI implements ActionListener {
 	}
 	public void postRecursion() {
 		for (int i = 0; i < 1;) {
+			System.out.println("Done " + recursionFinished);
 			if (recursionFinished == true) {
 				recursionFinished = false;
 				System.out.println("Re-creating GUI");
