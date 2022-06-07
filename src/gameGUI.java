@@ -15,7 +15,7 @@ public class gameGUI implements ActionListener {
 	// int yRand = 0;
 	boolean recursionFinished = false;
 	JFrame frame;
-	JPanel panel;
+	// JPanel panel;
 	JButton[][] lightButtons;
 
 	
@@ -33,7 +33,7 @@ public class gameGUI implements ActionListener {
 
 		// Set frame and panel
 		frame = new JFrame();
-		panel = new JPanel();
+		// panel = new JPanel();
 		// Default exit on close operation
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Creates button array
@@ -126,7 +126,7 @@ public class gameGUI implements ActionListener {
 		frame.add(contentPane);
 		frame.setSize(500, 500);
 		frame.setVisible(true);
-		frame.add(panel);
+		// frame.add(panel);
 	}
 
 	public int variationRGB(int color) {
@@ -199,7 +199,7 @@ public class gameGUI implements ActionListener {
 		frame.dispose();
 		// frame.setVisible(false);
 		frame = null;
-		panel = null;
+		// panel = null;
 
 		X += 2;
 		Y += 2;
