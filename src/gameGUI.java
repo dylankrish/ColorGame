@@ -74,6 +74,8 @@ public class gameGUI implements ActionListener {
 					lightButtons[randomX][randomY] = btn;
 					lightButtons[i][j].setActionCommand("randomclicked");
 					lightButtons[i][j].addActionListener(this);
+					lightButtons[i][j].addActionListener(this);
+					lightButtons[i][j].addActionListener(this);
 					btn.setBorder(BorderFactory.createLineBorder(Color.white));
 					btn.setBackground(new Color(newRed, newGreen, newBlue));
 				} else {
