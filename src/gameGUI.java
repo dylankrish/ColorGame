@@ -326,23 +326,23 @@ public class gameGUI implements ActionListener {
 		}
 
 		// X, Y
-		if (!lightButtons[inputX][inputY].getBackground().equals(Color.black)) {
-			lightButtons[inputX][inputY].setBackground(Color.black);
-			try {
-				Thread.sleep(50);
-			} catch (Exception e) {
-			}
-			frame.repaint();
-			frame.revalidate();
+		// if (!lightButtons[inputX][inputY].getBackground().equals(Color.black)) {
+		// 	lightButtons[inputX][inputY].setBackground(Color.black);
+		// 	try {
+		// 		Thread.sleep(50);
+		// 	} catch (Exception e) {
+		// 	}
+		// 	frame.repaint();
+		// 	frame.revalidate();
 			
-			Thread thread = new Thread(){
-				public void run(){
-					  recursiveAnimation(inputX, inputY);
-				}
-			};
+		// 	Thread thread = new Thread(){
+		// 		public void run(){
+		// 			  recursiveAnimation(inputX, inputY);
+		// 		}
+		// 	};
 
-			thread.run();
-		}
+		// 	thread.run();
+		// }
 
 		// X + 1, Y
 		if (inputX + 1 < X) {
@@ -429,16 +429,16 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 
-			if (inputX == X - 1 && inputY == X - 1) {
-				System.out.println("Finished Recursion");
-				recursionFinished = true;
-				return;
-			}
-			return;
+			// if (inputX == X - 1 && inputY == X - 1) {
+			// 	System.out.println("Finished Recursion");
+			// 	recursionFinished = true;
+			// 	return;
+			// }
 
 		}
 
 		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + " ms on position " + inputX + " " + inputY);
+		return;
 	}
 	public void postRecursion() {
 		for (int i = 0; i < 1;) {
