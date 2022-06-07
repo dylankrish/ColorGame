@@ -75,6 +75,7 @@ public class gameGUI implements ActionListener {
 					// Set the random unique color
 					lightButtons[randomX][randomY] = btn;
 					lightButtons[i][j].setActionCommand("randomclicked");
+					// The more action listeners there are, the more recursive functions will be ran
 					lightButtons[i][j].addActionListener(this);
 					lightButtons[i][j].addActionListener(this);
 					lightButtons[i][j].addActionListener(this);
