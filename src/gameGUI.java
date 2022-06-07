@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class gameGUI implements ActionListener {
-	int X = 2;
-	int Y = 2;
+	int X;
+	int Y;
 	int randomX;
 	int randomY;
 	boolean recursionFinished = false;
@@ -16,7 +16,9 @@ public class gameGUI implements ActionListener {
 	JButton[][] lightButtons;
 
 	
-	public gameGUI(int X, int Y) {
+	public gameGUI(int inX, int inY) {
+		X = inX;
+		Y = inY;
 		// Show rules
 		// JOptionPane.showMessageDialog(frame, "read the damn rules");
 		createGameGUI();
