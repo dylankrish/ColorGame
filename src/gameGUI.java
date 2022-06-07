@@ -138,7 +138,7 @@ public class gameGUI implements ActionListener {
 		} else if (eventName.equals("no.")) {
 			System.out.println("no.");
 			try {
-				Desktop.getDesktop().browse(new URL("https://www.youtube.com/watch?v=dQw4w9WgXcQ").toURI());
+				Desktop.getDesktop().browse(new URL("https://youtu.be/dQw4w9WgXcQ?t=43").toURI());
 			} catch (Exception e) {
 			}
 			System.exit(0);
