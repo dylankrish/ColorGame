@@ -11,11 +11,8 @@ public class gameGUI implements ActionListener {
 	int Y = 2;
 	int randomX;
 	int randomY;
-	// int xRand = 0;
-	// int yRand = 0;
 	boolean recursionFinished = false;
 	JFrame frame;
-	// JPanel panel;
 	JButton[][] lightButtons;
 
 	
@@ -33,7 +30,6 @@ public class gameGUI implements ActionListener {
 
 		// Set frame and panel
 		frame = new JFrame();
-		// panel = new JPanel();
 		// Default exit on close operation
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Creates button array
@@ -55,37 +51,6 @@ public class gameGUI implements ActionListener {
 
 		// create a random number between 0 and Y
 		randomY = (int) (Math.random() * Y);
-
-		// JButton btnColor = new JButton();
-
-		// BEGIN RANDOM COLORS:
-		// xRand = 0;
-		// yRand = 0;
-
-		// int newRed = randomRed + 40;
-		// int newGreen = randomGreen + 40;
-		// int newBlue = randomBlue + 40;
-
-		// needs to be + 40 cause math
-		// make it more or less depending on level
-		// if user goes to each level (like 10) decrease the variation
-
-		// this is the variation statement
-		// if (newRed >= 255) {
-		// newRed = newRed - 40;
-		// }
-		//
-		// if (newGreen >= 255) {
-		// newGreen = newGreen - 40;
-		// }
-		//
-		// if (newBlue >= 255) {
-		// newBlue = newBlue - 40;
-		// }
-
-		// END RANDOM COLORS
-
-
 
 
 
@@ -148,7 +113,6 @@ public class gameGUI implements ActionListener {
 				return color - random;
 			}
 		}
-		// return (int)(Math.random() * color);
 	}
 
 	@Override
@@ -166,20 +130,7 @@ public class gameGUI implements ActionListener {
 				}
 			};
 
-			// Thread thread2 = new Thread() {
-			// 	public void run() {
-				  	// System.out.println("Post recursion thread running (check)");
-				  	// postRecursion();
-					// System.out.println("Backup loop running");
-					// backupLoop();
-			// 		reCreateGUI();
-
-			// 	}
-			// };
-
 			thread.start();
-			// thread2.start();
-			// createGameGUI();
 			
 
 		} else if (eventName.equals("no.")) {
@@ -197,43 +148,17 @@ public class gameGUI implements ActionListener {
 
 	public void reCreateGUI() {
 		frame.dispose();
-		// frame.setVisible(false);
 		frame = null;
-		// panel = null;
 
 		X += 2;
 		Y += 2;
 		createGameGUI();
 	}
 
-	public void sysexit() {
-		try {
-			Thread.sleep(7000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.exit(0);
-	}
-
-	public void backupLoop() {
-		for (int i = 0; i < X; i++) {
-			for (int j = 0; j < Y; j++) {
-				lightButtons[i][j].setBackground(Color.black);
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
 	public void recursiveAnimation(int inputX, int inputY) {
 		System.out.println("Starting recursive animation at " + System.currentTimeMillis() + " ms on position " + inputX + " " + inputY);
 
-		// change inputX - 1, inputY + 1 button to black
-		// check to see if inputX - 1, inputY + 1 is black or out of bounds
+		// check to see if inputX - a, inputY + b is black or out of bounds
 		// if black or out of bounds, do nothing
 		// if not black, change to black and call recursiveAnimation on that button
 
@@ -325,25 +250,6 @@ public class gameGUI implements ActionListener {
 			}
 		}
 
-		// X, Y
-		// if (!lightButtons[inputX][inputY].getBackground().equals(Color.black)) {
-		// 	lightButtons[inputX][inputY].setBackground(Color.black);
-		// 	try {
-		// 		Thread.sleep(50);
-		// 	} catch (Exception e) {
-		// 	}
-		// 	frame.repaint();
-		// 	frame.revalidate();
-			
-		// 	Thread thread = new Thread(){
-		// 		public void run(){
-		// 			  recursiveAnimation(inputX, inputY);
-		// 		}
-		// 	};
-
-		// 	thread.run();
-		// }
-
 		// X + 1, Y
 		if (inputX + 1 < X) {
 			if (!lightButtons[inputX + 1][inputY].getBackground().equals(Color.black)) {
@@ -429,30 +335,10 @@ public class gameGUI implements ActionListener {
 				thread.run();
 			}
 
-			// if (inputX == X - 1 && inputY == X - 1) {
-			// 	System.out.println("Finished Recursion");
-			// 	recursionFinished = true;
-			// 	return;
-			// }
-
 		}
 
 		System.out.println("Ending recursive animation at " + System.currentTimeMillis() + " ms on position " + inputX + " " + inputY);
 		return;
-	}
-	public void postRecursion() {
-		for (int i = 0; i < 1;) {
-			System.out.println("Done " + recursionFinished);
-			if (recursionFinished == true) {
-				recursionFinished = false;
-				System.out.println("Re-creating GUI");
-				createGameGUI();
-				frame.repaint();
-				frame.revalidate();
-				return;
-			}
-		}
 		
 	}
-
 }
