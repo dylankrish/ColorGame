@@ -104,7 +104,7 @@ public class gameGUI implements ActionListener {
 				}
 
 				// CHECK FOR RANDOM COLORS
-				if (i == randomY && j == randomY) {
+				if (i == randomX && j == randomY) {
 					// Set the random unique color
 					lightButtons[randomX][randomY] = btn;
 					lightButtons[i][j].setActionCommand("randomclicked");
