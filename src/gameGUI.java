@@ -20,7 +20,11 @@ public class gameGUI implements ActionListener {
 		X = inX;
 		Y = inY;
 		// Show rules
-		// JOptionPane.showMessageDialog(frame, "read the damn rules");
+		JOptionPane.showMessageDialog(frame, "Rules: \n" +
+				"1. Click on the odd one out! \n" +
+				"2. Click anywhere on the board once finished to proceed to the next level \n" +
+				"3. If you get a level incorrectly, expect a surprise... \n" +
+				"4. Have fun!");
 		createGameGUI();
 	}
 
