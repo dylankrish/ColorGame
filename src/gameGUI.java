@@ -48,9 +48,9 @@ public class gameGUI implements ActionListener {
 		int randomRed = randomRGB();
 		int randomGreen = randomRGB();
 		int randomBlue = randomRGB();
-		int newRed = variationRGB(randomRed);
-		int newGreen = variationRGB(randomGreen);
-		int newBlue = variationRGB(randomBlue);
+		int newRed = variationRGB(randomRed); // Get an offset for red
+		int newGreen = variationRGB(randomGreen); // Get an offset for green
+		int newBlue = variationRGB(randomBlue); // Get an offset for blue
 
 		// create a random number between 0 and X
 		randomX = (int) (Math.random() * X);
@@ -67,7 +67,7 @@ public class gameGUI implements ActionListener {
 
 				lightButtons[i][j] = btn; // btn is the name of the button
 				
-
+				// Fix for macOS
 				String os = System.getProperty("os.name");
 				if (os.equals("Mac OS X")) {
 					btn.setOpaque(true);
